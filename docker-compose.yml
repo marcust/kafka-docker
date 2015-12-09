@@ -3,12 +3,14 @@ zookeeper:
   ports: 
     - "2181"
 kafka:
-  build: .
+  image: wurstmeister/kafka
   ports:
     - "9092"
   links: 
     - zookeeper:zk
   environment:
-    KAFKA_ADVERTISED_HOST_NAME: 192.168.59.103
+    KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+    KAFKA_CREATE_TOPICS: topic-a:1:1,topic-b:1:1,topic-c:1:1,topic-d:1:1,topic-e:1:1,topic-f:1:1,topic-g:1:1,topic-h:1:1,topic-i:1:1,topic-j:1:1,topic-k:1:1,topic-l:1:1,topic-m:1:1,topic-n:1:1
+    KAFKA_ADVERTISED_HOST_NAME: localhost
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
